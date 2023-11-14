@@ -7,7 +7,7 @@
 .App {
   width: 500px;
   height: 500px;
-  padding: 20px;
+  padding: 30px;
   background-color: beige;
   border-radius: 5%;
   position: absolute;
@@ -25,7 +25,7 @@ main {
 
 main input {
   width: 200px;
-  height: 50px;
+  height: 45px;
   padding: 10px;
   border: none;
   border-radius: 5%;
@@ -33,7 +33,5 @@ main input {
 }
 
 .showInput {
-  width: 200px;
-  margin-top: 50px;
-  text-align: start;
+  margin-top: 30px;
 }
