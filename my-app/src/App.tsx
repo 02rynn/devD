@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { debounce } from './debounce';
 
 interface DebounceOptions {
@@ -8,13 +8,16 @@ interface DebounceOptions {
 
 function App() {
   const [inputValue, setInputValue] = useState<string>('기본값입니다');
+  const [wait, setWait] = useState<number>(0);
+  const [confirmWait, setConfirmWait] = useState<number>(0);
+  const [immediate, setImmediate] = useState<boolean>();
 
   //wait은 지연시간, immediate는 즉시실행 유무
   const debounceUserInput = debounce(
     (e: ChangeEvent<HTMLInputElement>) => {
       return e.target.value;
     },
-    { wait: 1000, immediate: false } as DebounceOptions
+    { wait: wait, immediate: immediate } as DebounceOptions
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,12 +27,50 @@ function App() {
     });
   };
 
+  const handleChangeWait = (e: ChangeEvent<HTMLInputElement>) => {
+    const waitValue = parseInt(e.target.value);
+    setWait(waitValue);
+  };
+
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!wait) {
+      alert('값을 입력해주세요. 기본 지연값은 1초 입니다');
+      return;
+    }
+
+    setConfirmWait(wait);
+    alert(`지연값이${wait / 1000}초로 변경되었습니다`);
+  };
+
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      alert('debounce mode가 해제되었습니다');
+    } else {
+      alert('debounce mode가 켜졌습니다');
+    }
+    setImmediate(e.target.checked);
+  };
+
   return (
     <div className="App">
       <header>
         <h1>데브디 코딩테스트 - 정혜린</h1>
       </header>
       <main>
+        <div className="optionBox">
+          <p> *지연시간은 단위는 ms입니다 (1000ms == 1초)</p>
+          <p> {`*현재 지연설정 : ${confirmWait / 1000}초`}</p>
+          <input
+            type="number"
+            placeholder="지연시간을 입력해주세요"
+            onChange={handleChangeWait}
+          />
+          <button onClick={handleClick}>확인</button>
+          <label>
+            <input type="checkbox" onChange={handleRadioChange} />
+            No debounce
+          </label>
+        </div>
         <input
           type="text"
           placeholder="값을 입력하세요"
