@@ -13,6 +13,8 @@ function App() {
   const [immediate, setImmediate] = useState<boolean>();
 
   //wait은 지연시간, immediate는 즉시실행 유무
+  //함수를 통해 직접 변경하고 싶다면 wait: 5000, immediate:true/false로
+  //값을 직접 변경할 수 있습니다.
   const debounceUserInput = debounce(
     (e: ChangeEvent<HTMLInputElement>) => {
       return e.target.value;
