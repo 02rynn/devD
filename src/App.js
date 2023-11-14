@@ -34,9 +34,7 @@ function App() {
           placeholder="값을 입력하세요"
           onChange={handleChangeUserInput}
         />
-        <div style={{ marginTop: '50px', textAlign: 'start', width: '200px' }}>
-          입력값: {inputValue}
-        </div>
+        <div className="showInput">입력값: {inputValue}</div>
       </main>
     </div>
   );

@@ -31,3 +31,9 @@ main input {
   border-radius: 5%;
   outline: none;
 }
+
+.showInput {
+  width: 200px;
+  margin-top: 50px;
+  text-align: start;
+}
