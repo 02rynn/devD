@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState, useEffect } from 'react';
 import { debounce } from './debounce';
 
 interface DebounceOptions {
@@ -11,6 +11,10 @@ function App() {
   const [wait, setWait] = useState<number>(1000);
   const [confirmWait, setConfirmWait] = useState<number>(wait);
   const [immediate, setImmediate] = useState<boolean>(false);
+
+  useEffect(() => {
+    setConfirmWait(wait);
+  }, [wait]);
 
   //wait은 지연시간, immediate는 즉시실행 유무
   //함수를 통해 직접 변경하고 싶다면 wait: 5000, immediate:true/false로
@@ -39,8 +43,6 @@ function App() {
       alert('값을 입력해주세요. 기본 지연값은 1초 입니다');
       return;
     }
-
-    setConfirmWait(wait);
     alert(`지연값이${wait / 1000}초로 변경되었습니다`);
   };
 
