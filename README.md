@@ -1,12 +1,11 @@
-
-## 프로젝트 실행경로
-`devD/my-app`
-
-## 실행환경
+## 개발환경
 - `@types/node` ^16.18.61
 - `@types/react` ^18.2.37
 - `react` ^18.2.0`
 - `npm` 9.5.1
+  
+## 프로젝트 실행위치
+`devD/my-app`
     
 ## 패키지 설치
 `npm install`
