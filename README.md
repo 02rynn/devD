@@ -1,6 +1,6 @@
 
 ## 프로젝트 실행경로
-`devd -> test -> my-app`
+`devD/my-app`
 
 ## 실행환경
 - `@types/node` ^16.18.61
