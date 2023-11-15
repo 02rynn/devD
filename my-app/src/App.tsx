@@ -23,9 +23,9 @@ function App() {
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    debounceUserInput.debounced(e).then(() => {
+    debounceUserInput.debounced(e).then((value) => {
       //프로미스가 resolve되면 값을 set
-      setInputValue(e.target.value);
+      setInputValue(value);
     });
   };
 
@@ -43,7 +43,7 @@ function App() {
     setConfirmWait(wait);
   };
 
-  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleCheckBoxChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       alert('값이 지연없이 출력됩니다');
     } else {
@@ -68,7 +68,7 @@ function App() {
           />
           <button onClick={handleClick}>확인</button>
           <label>
-            <input type="checkbox" onChange={handleRadioChange} />
+            <input type="checkbox" onChange={handleCheckBoxChange} />
             즉시실행
           </label>
         </div>
