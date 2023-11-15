@@ -8,9 +8,9 @@ interface DebounceOptions {
 
 function App() {
   const [inputValue, setInputValue] = useState<string>('기본값입니다');
-  const [wait, setWait] = useState<number>(0);
-  const [confirmWait, setConfirmWait] = useState<number>(0);
-  const [immediate, setImmediate] = useState<boolean>();
+  const [wait, setWait] = useState<number>(1000);
+  const [confirmWait, setConfirmWait] = useState<number>(wait);
+  const [immediate, setImmediate] = useState<boolean>(false);
 
   //wait은 지연시간, immediate는 즉시실행 유무
   //함수를 통해 직접 변경하고 싶다면 wait: 5000, immediate:true/false로
@@ -46,9 +46,9 @@ function App() {
 
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      alert('debounce mode가 해제되었습니다');
+      alert('debounce mode가 해제됩니다');
     } else {
-      alert('debounce mode가 켜졌습니다');
+      alert('debounce mode가 실행됩니다');
     }
     setImmediate(e.target.checked);
   };
