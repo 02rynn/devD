@@ -45,9 +45,9 @@ function App() {
 
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      alert('debounce mode가 해제됩니다');
+      alert('값이 지연없이 출력됩니다');
     } else {
-      alert('debounce mode가 실행됩니다');
+      alert('값이 주어진 지연시간 후 출력됩니다');
     }
     setImmediate(e.target.checked);
   };
@@ -69,7 +69,7 @@ function App() {
           <button onClick={handleClick}>확인</button>
           <label>
             <input type="checkbox" onChange={handleRadioChange} />
-            No debounce
+            즉시실행
           </label>
         </div>
         <input
